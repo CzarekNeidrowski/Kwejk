@@ -1,6 +1,7 @@
 package pl.akademiakodu.data;
 
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.PathVariable;
 import pl.akademiakodu.model.Gif;
 
 import java.util.ArrayList;
@@ -32,5 +33,15 @@ public class GifRepository {
             }
         }
         return favoritesGifs;
+    }
+    public List<Gif> getGifsByCategoryId(int id){
+            List<Gif> categoryGifs = new ArrayList<>();
+
+        for (Gif value : ALL_GIFS){
+            if (value.getCategoryId() == id){
+                categoryGifs.add(value);
+            }
+        }
+        return categoryGifs;
     }
 }
