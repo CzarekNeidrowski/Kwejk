@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import pl.akademiakodu.data.GifRepository;
 import pl.akademiakodu.model.Gif;
 
@@ -24,6 +25,15 @@ public class GifController {
         map.put("gifs", gifs);
 
         return "home";
+
+
     }
+    @RequestMapping("/favorites")
+    public String gifFavorites(ModelMap modelMap){
+        List<Gif> gifs = gifRepository.getFavoriteGifs();
+        modelMap.put("gifs", gifs);
+        return "favorites";
+    }
+
 
 }
